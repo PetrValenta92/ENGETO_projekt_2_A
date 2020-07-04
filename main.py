@@ -1,6 +1,7 @@
 # The game "Bulls & Cows"
 
 import random
+import timeit
 
 
 # The main function
@@ -39,13 +40,13 @@ def main():
         print(f'{bull} bulls, {cow} cows')
 
     # Player's evaluation
-    if guess > 0 and guess <= 5:
+    if guess <= 5:
         print("That is amazing!")
-    elif quess > 5 and quess <= 10:
+    elif guess > 5 and guess <= 10:
         print("That is not bad.")
-    elif quess > 10 and quess <= 15:
+    elif guess > 10 and guess <= 15:
         print("Wish you better luck next time.")
-    else:
+    elif guess > 15:
         print("You should go back to kindergarden! :D")
 
 
@@ -63,6 +64,7 @@ def random_number():
             break
 
     return secret_num
+
 
 # Let's play the game!
 main()
