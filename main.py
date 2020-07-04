@@ -1,7 +1,9 @@
 # The game "Bulls & Cows"
 
 import random
-import timeit
+import time
+
+start_time = time.time()
 
 
 # The main function
@@ -68,3 +70,6 @@ def random_number():
 
 # Let's play the game!
 main()
+
+elapsed_time = time.time() - start_time
+print(f'The game took you {elapsed_time} seconds.')
