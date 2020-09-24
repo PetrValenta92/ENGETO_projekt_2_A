@@ -2,24 +2,33 @@
 
 import random
 import time
+import sys
 
 start_time = time.time()
-
 
 # The main function
 def main():
     # Random number
     random_num = random_number()
+    print(60*"=")
     print("Hi there!\nI've generated a random 4 digit number for you.\nLet's play the Bulls & Cows game.")
+    print(60*"=")
+    print("Please remember, every digit in the number is unique.\nGood luck!")
+    print(60*"=")
 
     # Number of guesses
     guess = 0
 
-    # Bull = the number and position is correct, Cow = the number is correct, but the position is different
+    # Bull = the number and position is correct, Cow = the number is correct, but the position is wrong
     while True:
 
         # Player's guess
         player_num = list(input("Enter the number:"))
+        if len(player_num) != 4:
+            print("Remember you are guessing 4 digit number!")
+            guess += 1
+            continue
+
         guess += 1
 
         # Any Bulls or Cows?
@@ -55,21 +64,23 @@ def main():
 # Random number, !every single number must be unique!
 def random_number():
     secret_num = []
+    end = True
 
-    while True:
+    while end:
         num = str(random.randrange(0, 10))
 
         if num not in secret_num:
             secret_num.append(num)
 
         if len(secret_num) == 4:
-            break
+            end = False
 
     return secret_num
 
 
 # Let's play the game!
-main()
+if __name__ == '__main__':
+    sys.exit(main())
 
 elapsed_time = time.time() - start_time
 print(f'The game took you {elapsed_time} seconds.')
